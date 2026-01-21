@@ -1,0 +1,115 @@
+.quote-calculator {
+    background: var(--bg-card);
+    padding: 8px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    margin-top: -100px;
+}
+
+.calculator-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.3s;
+    background: transparent;
+}
+
+.tab-btn.active {
+    background: rgba(0, 208, 132, 0.1);
+    color: var(--primary-green);
+}
+
+.calculator-content {
+    padding: 0 24px 24px;
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.calc-grid {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+}
+
+.calc-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.calc-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.calc-group input[type="text"],
+.calc-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.calc-group input[type="text"]:focus,
+.calc-group select:focus {
+    border-color: var(--primary-green);
+}
+
+.range-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.range-container span {
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary-green);
+}
+
+.calculate-btn {
+    width: auto;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .quote-calculator {
+        margin: 0 20px;
+        margin-top: -50px;
+    }
+
+    .calculator-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .calc-grid {
+        flex-direction: column;
+    }
+}

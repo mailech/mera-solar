@@ -1,0 +1,178 @@
+.footer-section {
+    background-color: var(--bg-body);
+    padding-top: 100px;
+    position: relative;
+}
+
+.footer-cta {
+    background-color: var(--primary-dark-blue);
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white-always);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 80px;
+    /* Visual flair */
+    background-image: linear-gradient(to right, #0B1C3E, #142850);
+}
+
+.footer-cta h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.footer-cta p {
+    opacity: 0.8;
+    font-size: 16px;
+}
+
+.cta-input-group {
+    display: flex;
+    background: var(--white-always);
+    padding: 8px;
+    border-radius: 100px;
+    width: 420px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-input-group input {
+    flex: 1;
+    border: none;
+    padding: 0 24px;
+    outline: none;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--text-main);
+    background: transparent;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #eee;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 24px;
+}
+
+/* Re-use the logo classes from Navbar.css or duplicate if necessary.
+   Since they are not imported in Footer.css, we should ensure the styles are available global or duplicated here.
+   Ideally global, but for now we duplicate small parts or assume global.css import.
+   Actually, Navbar.css is not global. Let's add the specific styles here to be safe. */
+
+.footer-logo .logo-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.footer-logo .logo-img {
+    height: 245%;
+    width: auto;
+    max-width: none;
+    object-fit: cover;
+    object-position: -33px center;
+}
+
+.footer-logo .logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    color: var(--text-heading);
+    /* Fallback */
+}
+
+/* Light Mode: Brand Blue */
+html[data-theme='light'] .footer-logo .logo-text {
+    color: var(--primary-dark-blue);
+}
+
+/* Dark Mode: White */
+html[data-theme='dark'] .footer-logo .logo-text {
+    color: var(--white-always);
+}
+
+.footer-logo .logo-text-highlight {
+    color: var(--primary-green);
+}
+
+.footer-col p,
+.footer-brand-col p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 300px;
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    /* Ensure spacing from content */
+}
+
+.social-links a {
+    color: var(--text-light);
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-green);
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    color: var(--text-heading);
+    margin-bottom: 24px;
+}
+
+.footer-col a {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--primary-green);
+}
+
+.footer-bottom {
+    padding: 32px 0;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+@media (max-width: 968px) {
+    .footer-cta {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .cta-input-group {
+        width: 100%;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}

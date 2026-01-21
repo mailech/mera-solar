@@ -1,0 +1,931 @@
+/* Projects Page Container */
+.projects-page {
+    padding-top: 100px;
+    background-color: var(--bg-body);
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.projects-hero {
+    background: linear-gradient(135deg, #0B1C3E 0%, #1a3c5e 100%);
+    padding: 60px 0 80px;
+    color: white;
+    margin-top: -100px;
+    /* Counteract page padding for full bleed */
+    padding-top: 160px;
+    /* Compensate */
+    margin-bottom: 40px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.projects-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.projects-hero p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+/* Filters */
+.projects-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    background: var(--bg-secondary);
+    padding: 12px 20px;
+    border-radius: 12px;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.filter-tab {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--text-muted);
+}
+
+.filter-tab.active {
+    background: var(--primary-green);
+    color: white;
+    font-weight: 600;
+}
+
+.filter-dropdowns {
+    display: flex;
+    gap: 12px;
+}
+
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.project-card-full {
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.project-card-full:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 220px;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-dark-blue);
+    text-transform: uppercase;
+}
+
+.card-details {
+    padding: 24px;
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+.card-capacity {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-green);
+}
+
+.card-location {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.card-stats-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+}
+
+.load-more-container {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+/* Spotlight Section */
+.project-spotlight {
+    margin-bottom: 100px;
+    padding: 0 5%;
+    /* Added padding relative to viewport */
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spotlight-label {
+    color: var(--primary-green);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.spotlight-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 30px;
+}
+
+/* Spotlight Meta Bar */
+/* Spotlight Meta Bar */
+.spotlight-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-secondary);
+    padding: 24px 40px;
+    border-radius: 12px;
+    margin-bottom: 60px;
+}
+
+.meta-item h4 {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.meta-item p {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+/* Narrative Cards Row */
+.case-study-narrative {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.narrative-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid transparent;
+    position: relative;
+    height: 100%;
+}
+
+.narrative-card.red-border {
+    border-left-color: #FF6B6B;
+}
+
+.narrative-card.green-border {
+    border-left-color: #00D084;
+}
+
+.narrative-card.blue-border {
+    border-left-color: #3B82F6;
+}
+
+.narrative-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.narrative-icon.red {
+    background: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+}
+
+.narrative-icon.green {
+    background: rgba(0, 208, 132, 0.1);
+    color: #00D084;
+}
+
+.narrative-icon.blue {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3B82F6;
+}
+
+.narrative-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 12px;
+}
+
+.narrative-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Impact & Visual Split Container */
+/* Impact & Visual Split Container - Strict Grid */
+.impact-visual-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    /* Align to top */
+    min-height: auto;
+    background: transparent;
+    /* No container bg */
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+/* Impact Section Left - Transparent Container */
+.impact-section {
+    background: transparent;
+    /* No background */
+    box-shadow: none;
+    padding: 0;
+    /* Removing padding to align with grid */
+    display: flex;
+    flex-direction: column;
+}
+
+.impact-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 24px;
+    position: relative;
+    display: inline-block;
+}
+
+.impact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Space between the distinct cards */
+}
+
+/* The Individual Requirement Cards */
+.impact-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: var(--bg-card);
+    /* The Card Background */
+    padding: 24px 30px;
+    border-radius: 16px;
+    /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    /* Subtle card shadow */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle border for dark mode */
+    border-bottom: none;
+    /* Resetting previous styles */
+}
+
+.impact-row:last-child {
+    border-bottom: none;
+}
+
+.impact-icon-circle {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+/* Specific Icon Styling Matches */
+.green-ring {
+    background: transparent;
+    border: 5px solid #00D084;
+    /* Ring style */
+    color: #00D084;
+}
+
+.green-ring::after {
+    display: none;
+}
+
+/* Remove partial ring hack */
+
+.soft-green {
+    background: #D1FAE5;
+    /* Light Green Bg */
+    color: #065F46;
+    /* Dark Green Text */
+}
+
+/* Dark Mode Override for exact colors if variable not perfect */
+[data-theme='dark'] .soft-green {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34D399;
+}
+
+.soft-blue {
+    background: #DBEAFE;
+    /* Light Blue Bg */
+    color: #1E40AF;
+    /* Dark Blue Text */
+}
+
+[data-theme='dark'] .soft-blue {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60A5FA;
+}
+
+.impact-details h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 4px;
+}
+
+.impact-details p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Before/After Visual (Right) - Independent Block */
+/* Before/After Visual (Right) - Independent Block */
+.spotlight-visual {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /* Fixed height match */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    display: block;
+}
+
+/* Base Wrapper for images to ensure they overlap */
+.visual-half-container {
+    position: absolute;
+    /* Crucial for overlap */
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* First Image (After - Full Width Background) */
+.visual-half-container:nth-of-type(1) {
+    width: 100%;
+    z-index: 1;
+}
+
+/* Second Image (Before - Clipped Top Layer) */
+.visual-half-container:nth-of-type(2) {
+    width: 50%;
+    /* Initial width, JS would control this ideally, or just static 50% split */
+    z-index: 2;
+    background: var(--bg-secondary);
+}
+
+.visual-img {
+    width: 100%;
+    /* For After image */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Correction for Before Image to ensure it stays fixed relative to container, not scaled by the 50% width */
+.visual-half-container:nth-of-type(2) .visual-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    /* If container is 50%, 200% width = 100% of parent. Simple CSS trick for static split */
+    /* Alternatively, rely on object-fit: cover if width is 100% of the 50% container? No, that squishes. 
+       Better to use explicit width matching parent container pixels or use 100vw equivalent if possible.
+       Or just simple overlap. Use width: 100% of element?
+       If the container clips, we want the image inside to be full size matching the PARENT (.spotlight-visual).
+    */
+    width: 100%;
+    /* If this is relative to visual-half-container, it renders 50% of image. Bad. */
+    /* Actually for a static 50/50 comparison without JS drag, we can just use... 
+       Wait, does the user have JS dragging? 
+       "visual-split-line" implies dragging.
+       Looking at Projects.jsx, it seems to rely on CSS 'visual-split-line' but I don't see any React state for width?
+       If there is NO React state controlling width, then it's just a static split?
+       Or is there hover logic? 
+       Usually these need JS. I only edit CSS/JSX.
+       If existing JS is missing, I should at least make it LOOK like a 50/50 split.
+       
+       Let's trick: 
+       .visual-half-container:nth-of-type(2) { width: 50%; left: auto; right: 0; }
+       This puts Before on the right 50%. After on the left 50%? 
+       Previous HTML comments: "Left Side: After", "Right Side: Before".
+       So After is Left, Before is Right.
+       
+       Solution:
+       .spotlight-visual: relative.
+       Div 1 (After): absolute, left: 0, width: 50%, height: 100%, overflow hidden.
+       Div 2 (Before): absolute, right: 0, width: 50%, height: 100%, overflow hidden.
+       
+       This creates a static 50/50 split line. This is robust.
+    */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fix images inside separate halves */
+.visual-half-container .visual-img {
+    width: 200%;
+    /* Compensate for 50% container width to maintain aspect ratio effectively? 
+                   No, object-fit cover works on the container dimensions. 
+                   If container is 50% wide, object-fit cover just crops center/center usually. 
+                   If we want continuous image, we need adjustment. 
+                   But these are TWO DIFFERENT images (After vs Before). 
+                   They don't strictly need to align pixel-perfectly like a 'glitch' slider if they are just 2 different states side-by-side.
+                   The User's reference has a white line in middle.
+                   So 50/50 split is fine.
+    */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Force specific positioning for the two halves */
+.visual-half-container:nth-of-type(1) {
+    width: 50%;
+    left: 0;
+    right: auto;
+    z-index: 1;
+}
+
+.visual-half-container:nth-of-type(2) {
+    width: 50%;
+    left: auto;
+    right: 0;
+    z-index: 1;
+}
+
+.visual-split-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: white;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    cursor: col-resize;
+    z-index: 20;
+}
+
+.visual-handle {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-heading);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.visual-label {
+    position: absolute;
+    top: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+    z-index: 10;
+    color: white;
+}
+
+.visual-label.after-left {
+    left: 20px;
+    background: #00D084;
+}
+
+.visual-label.before-right {
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Testimonial Quote */
+.project-quote {
+    background: rgba(0, 208, 132, 0.1);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 100px;
+}
+
+.quote-text {
+    font-size: 20px;
+    font-style: italic;
+    color: var(--text-heading);
+    margin-bottom: 20px;
+}
+
+.quote-author {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-green);
+    display: block;
+}
+
+.quote-role {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Footer CTA */
+/* Footer CTA - Project Style */
+.projects-cta-footer {
+    background: linear-gradient(110deg, #111827 50%, #064E3B 100%);
+    /* Deep dark to green gradient */
+    padding: 80px 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: white;
+    display: block;
+    /* Reset flex */
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.projects-cta-footer h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.projects-cta-footer p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: #00D084;
+    color: #0B1C3E;
+    font-weight: 700;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background-color: #00b371;
+}
+
+.btn-outline-light {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+@media (max-width: 768px) {
+    .projects-cta-footer {
+        padding: 60px 20px;
+    }
+
+    .projects-cta-footer h2 {
+        font-size: 28px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .projects-hero {
+        padding-top: 140px;
+    }
+
+    .projects-filter-bar {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .filter-tabs {
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 4px;
+    }
+
+    /* New Responsive Styles */
+    .case-study-narrative {
+        grid-template-columns: 1fr;
+    }
+
+    .spotlight-meta-bar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .impact-visual-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .spotlight-visual {
+        height: 300px;
+    }
+}
+
+/* Project Details Modal */
+.project-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.project-modal-card {
+    background: var(--bg-card);
+    width: 100%;
+    max-width: 1100px;
+    height: 600px;
+    max-height: 90vh;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    overflow: hidden;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+.modal-close-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-image-wrapper {
+    position: relative;
+    height: 100%;
+    width: 50%;
+    flex-shrink: 0;
+}
+
+.modal-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-content {
+    padding: 40px;
+    width: 50%;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.modal-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.modal-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-main);
+    margin-bottom: 40px;
+}
+
+.modal-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-box {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-box strong {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.stat-box span {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 900px) {
+    .project-modal-card {
+        flex-direction: column;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-image-wrapper {
+        width: 100%;
+        height: 250px;
+    }
+
+    .modal-content {
+        width: 100%;
+        padding: 24px;
+        overflow-y: visible;
+    }
+
+    .modal-close-btn {
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content h2 {
+        font-size: 24px;
+    }
+
+    .modal-meta {
+        gap: 16px;
+    }
+}

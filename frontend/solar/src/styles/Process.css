@@ -1,0 +1,115 @@
+.home-process-section {
+    background-color: var(--primary-dark-blue);
+    color: var(--white-always);
+    position: relative;
+    overflow: hidden;
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    position: relative;
+}
+
+.process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    right: 50px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+    display: none;
+    /* Hide on mobile default, show on desktop */
+}
+
+@media (min-width: 968px) {
+    .process-steps::before {
+        display: block;
+    }
+}
+
+.step-item {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    flex: 1;
+}
+
+.step-number {
+    display: none;
+    /* Decorative number if needed */
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.step-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--primary-green);
+    opacity: 0;
+    transition: all 0.3s;
+    width: 90px;
+    height: 90px;
+}
+
+.step-item:hover .step-icon {
+    background: var(--primary-green);
+    transform: scale(1.1);
+}
+
+.step-item:hover .step-icon::after {
+    opacity: 1;
+    animation: pulse 1.5s infinite;
+}
+
+.step-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.step-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+}
