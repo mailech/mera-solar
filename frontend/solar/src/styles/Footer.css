@@ -33,7 +33,8 @@
     background: var(--white-always);
     padding: 8px;
     border-radius: 100px;
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
