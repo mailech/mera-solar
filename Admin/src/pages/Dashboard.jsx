@@ -1,19 +1,4 @@
-import React from 'react';
-import Layout from '../components/Layout';
-import { Package, Folder, MessageSquare, Users } from 'lucide-react';
 
-const StatCard = ({ title, value, icon: Icon, color }) => (
-    <div className="bg-surface p-6 rounded-xl shadow-sm border border-border flex items-center gap-4 hover:border-border-hover transition-all duration-300">
-        <div className={`p-4 rounded-xl ${color} bg-opacity-20`}>
-            {/* Note: In tailwind v4 we might need exact colors or just use style if dynamic classes perform odd */}
-            <Icon size={24} className="text-white" />
-        </div>
-        <div>
-            <p className="text-sm text-text-muted font-medium">{title}</p>
-            <h3 className="text-2xl font-bold text-text-main">{value}</h3>
-        </div>
-    </div>
-);
 
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
