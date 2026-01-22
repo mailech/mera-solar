@@ -6,7 +6,7 @@ import logo from '../assets/logo.png';
 
 const Footer = () => {
     const location = useLocation();
-    const showCta = location.pathname !== '/projects' && location.pathname !== '/contact' && location.pathname !== '/services';
+    const showCta = location.pathname !== '/projects' && location.pathname !== '/contact' && location.pathname !== '/services' && location.pathname !== '/profile';
 
     return (
         <footer className="footer-section">

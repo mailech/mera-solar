@@ -11,7 +11,7 @@ exports.getAllProjects = async (req, res) => {
         console.error('Error fetching projects:', error);
         res.status(500).json({
             success: false,
-            message: 'Server Error fetching projects'
+            message: 'Database error: ' + error.message
         });
     }
 };
@@ -30,7 +30,7 @@ exports.getProjectById = async (req, res) => {
         console.error('Error fetching project:', error);
         res.status(500).json({
             success: false,
-            message: 'Server Error fetching project'
+            message: error.message
         });
     }
 };
@@ -40,20 +40,18 @@ exports.createProject = async (req, res) => {
     const image_url = req.file ? `/uploads/${req.file.filename}` : null;
 
     try {
-        // Map fields to match schema.sql structure
-        // Schema has: title, location, category, capacity, completion_date, image_url, description, co2_offset, homes_powered
         const sql = `INSERT INTO projects (title, location, category, capacity, completion_date, image_url, description, co2_offset, homes_powered) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
         const [result] = await mysqlPool.execute(sql, [
-            title,
-            location,
+            title || null,
+            location || null,
             category || 'Residential',
-            capacity,
-            completion_date,
-            image_url,
-            description,
-            co2_offset,
-            homes_powered
+            capacity || null,
+            completion_date || null,
+            image_url || '',
+            description || null,
+            co2_offset || null,
+            homes_powered || null
         ]);
 
         const newProject = {
@@ -63,7 +61,7 @@ exports.createProject = async (req, res) => {
         res.status(201).json({ success: true, data: newProject });
     } catch (error) {
         console.error('Error creating project:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -73,6 +71,6 @@ exports.deleteProject = async (req, res) => {
         res.status(200).json({ success: true, message: 'Project deleted' });
     } catch (error) {
         console.error('Error deleting project:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };

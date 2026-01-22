@@ -11,7 +11,7 @@ exports.getAllServices = async (req, res) => {
         console.error('Error fetching services:', error);
         res.status(500).json({
             success: false,
-            message: 'Server Error fetching services'
+            message: 'Database error: ' + error.message
         });
     }
 };
@@ -30,7 +30,7 @@ exports.getServiceById = async (req, res) => {
         console.error('Error fetching service:', error);
         res.status(500).json({
             success: false,
-            message: 'Server Error fetching service'
+            message: error.message
         });
     }
 };
@@ -40,12 +40,15 @@ exports.createService = async (req, res) => {
     try {
         const [result] = await mysqlPool.execute(
             'INSERT INTO services (title, description, icon, category, link) VALUES (?, ?, ?, ?, ?)',
-            [title, description, icon, category, link]
+            [title, description, icon || 'Zap', category || 'Residential', link || '#']
         );
-        res.status(201).json({ success: true, data: { id: result.insertId, title, description, icon, category, link } });
+        res.status(201).json({
+            success: true,
+            data: { id: result.insertId, title, description, icon, category, link }
+        });
     } catch (error) {
         console.error('Error creating service:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -55,6 +58,6 @@ exports.deleteService = async (req, res) => {
         res.status(200).json({ success: true, message: 'Service deleted' });
     } catch (error) {
         console.error('Error deleting service:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };

@@ -1,0 +1,276 @@
+/* Profile Dashboard Layout */
+.profile-dashboard {
+    max-width: 1200px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .profile-dashboard {
+        grid-template-columns: 1fr;
+        margin-top: 80px;
+    }
+}
+
+/* Sidebar */
+.profile-sidebar {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+    border: 1px solid var(--border-color);
+}
+
+.user-quick-info {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #00D084 0%, #009e63 100%);
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    font-weight: 700;
+}
+
+.user-quick-info h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-heading);
+}
+
+.user-quick-info p {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    opacity: 0.7;
+}
+
+.profile-nav button {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-body);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+}
+
+.profile-nav button:hover {
+    background: rgba(0, 208, 132, 0.1);
+    color: var(--primary-green);
+}
+
+.profile-nav button.active {
+    background: var(--primary-green);
+    color: white;
+}
+
+.profile-nav button.logout-btn {
+    margin-top: 12px;
+    color: #ef4444;
+}
+
+.profile-nav button.logout-btn:hover {
+    background: #fee2e2;
+}
+
+/* Main Content Area */
+.profile-content {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.section-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-heading);
+    margin: 0;
+}
+
+/* Forms */
+.profile-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .profile-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-heading);
+}
+
+/* Base Input Styles */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-body);
+    color: var(--text-heading);
+    font-size: 0.95rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.1);
+}
+
+/* Explicit Theme Overrides for Inputs */
+[data-theme='light'] .form-group input {
+    background: #ffffff;
+    color: #1e293b;
+    border-color: #e2e8f0;
+}
+
+[data-theme='dark'] .form-group input {
+    background: #1e293b;
+    color: #f1f5f9;
+    border-color: #334155;
+}
+
+/* Disabled State (Full Name & Email) */
+.form-group input:disabled {
+    cursor: not-allowed;
+    opacity: 1;
+    /* Reset default browser opacity */
+}
+
+[data-theme='light'] .form-group input:disabled {
+    background: #f1f5f9;
+    color: #64748b;
+    /* Slate-500 for good contrast */
+    border-color: #cbd5e1;
+}
+
+[data-theme='dark'] .form-group input:disabled {
+    background: #0f172a;
+    /* Darker than normal input */
+    color: #94a3b8;
+    /* Slate-400 for good contrast */
+    border-color: #1e293b;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.btn-update {
+    background: var(--primary-green);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    float: right;
+}
+
+.btn-update:hover {
+    background: #00b06f;
+    transform: translateY(-1px);
+}
+
+/* Orders Table */
+.orders-table-wrapper {
+    overflow-x: auto;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.orders-table th {
+    font-weight: 600;
+    color: var(--text-body);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.orders-table td {
+    color: var(--text-heading);
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.status-completed {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.status-cancelled {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.empty-orders {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-body);
+}
+
+.empty-orders svg {
+    margin-bottom: 16px;
+    color: #ccc;
+}

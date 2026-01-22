@@ -17,23 +17,29 @@ const connectDB = async () => {
 
 // MySQL Connection Pool
 const mysqlPool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || '127.0.0.1',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME || 'solar_db',
+    port: process.env.DB_PORT || 3306,
+    ssl: {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true
+    },
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 });
 
-// Test MySQL Connection
+// Test MySQL Connection (Non-blocking)
 mysqlPool.getConnection()
     .then(connection => {
-        console.log('MySQL Connected');
+        console.log('MySQL Connected successfully');
         connection.release();
     })
     .catch(err => {
-        console.error('MySQL Connection Error:', err);
+        console.error('MySQL Connection Error - Please check .env credentials:', err.message);
+        // We do NOT exit process here, so Mongo parts still work while user fixes MySQL creds
     });
 
 module.exports = { connectDB, mysqlPool };

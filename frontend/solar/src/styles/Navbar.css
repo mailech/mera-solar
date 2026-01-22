@@ -14,6 +14,10 @@
     border-radius: 50px;
     padding: 12px 30px;
 
+    /* Ensure text color is visible in light mode for buttons */
+    color: var(--text-heading);
+    /* Keep padding consistent */
+
     /* Visuals */
     background-color: var(--bg-card);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);

@@ -4,7 +4,7 @@ import { LayoutDashboard, Package, ShoppingBag, Folder, MessageSquare, LogOut, S
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from './ThemeContext';
-import logo from '../assets/logo.png';
+import logoIcon from '../assets/logo-icon.png';
 
 const Sidebar = () => {
     const location = useLocation();
@@ -29,7 +29,7 @@ const Sidebar = () => {
             <div className="p-8 flex items-center justify-center border-b" style={{ borderColor: 'var(--sidebar-border)' }}>
                 <Link to="/" className="flex items-center gap-3 no-underline px-2">
                     {/* Logo Icon */}
-                    <img src={logo} alt="meraSolar" className="w-10 h-10 object-contain rounded-lg" />
+                    <img src={logoIcon} alt="meraSolar" className="w-10 h-10 object-contain rounded-lg" />
 
                     {/* Text Mark */}
                     <div className="flex flex-col leading-none">

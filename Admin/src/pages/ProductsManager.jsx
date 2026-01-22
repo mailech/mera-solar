@@ -11,6 +11,26 @@ const ProductsManager = () => {
     const [formData, setFormData] = useState({
         title: '', price: '', capacity: '', category_id: '', image_url: '', tag: '', description: ''
     });
+    const [editingId, setEditingId] = useState(null);
+
+    const handleEdit = (product) => {
+        setFormData({
+            title: product.title,
+            price: product.price,
+            capacity: product.capacity,
+            category_id: product.category_id,
+            image_url: product.image_url || '',
+            tag: product.tag || '',
+            description: product.description || ''
+        });
+        setEditingId(product.id);
+        setShowModal(true);
+    };
+
+    const resetForm = () => {
+        setFormData({ title: '', price: '', capacity: '', category_id: '', image_url: '', tag: '', description: '' });
+        setEditingId(null);
+    };
 
     useEffect(() => {
         fetchProducts();
@@ -29,8 +49,13 @@ const ProductsManager = () => {
     const fetchCategories = async () => {
         try {
             const res = await axios.get('http://localhost:5000/api/categories');
-            setCategories(res.data.data);
+            if (res.data.success && Array.isArray(res.data.data)) {
+                setCategories(res.data.data);
+            } else {
+                setCategories([]);
+            }
         } catch (error) {
+            console.error('Fetch categories error:', error);
             toast.error('Failed to fetch categories');
         }
     };
@@ -49,6 +74,12 @@ const ProductsManager = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!formData.category_id) {
+            toast.error('Please select a category');
+            return;
+        }
+
         try {
             // Simplified features for now
             const payload = { ...formData, features: [] };
@@ -58,7 +89,9 @@ const ProductsManager = () => {
             fetchProducts();
             setFormData({ title: '', price: '', capacity: '', category_id: '', image_url: '', tag: '', description: '' });
         } catch (error) {
-            toast.error('Failed to add product');
+            console.error('Add product error:', error);
+            const msg = error.response?.data?.message || 'Failed to add product';
+            toast.error(msg);
         }
     };
 
@@ -70,7 +103,7 @@ const ProductsManager = () => {
                     <p className="text-text-muted">Manage your solar packages and equipment</p>
                 </div>
                 <button
-                    onClick={() => setShowModal(true)}
+                    onClick={() => { resetForm(); setShowModal(true); }}
                     className="bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/90 text-[var(--color-background)] px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all shadow-lg hover:shadow-xl font-medium"
                 >
                     <Plus size={20} /> Add Product
@@ -112,7 +145,7 @@ const ProductsManager = () => {
                                         </span>
                                     </td>
                                     <td className="p-5 text-right flex justify-end items-center h-full pt-8">
-                                        <button className="text-blue-500 hover:text-blue-600 mx-1 p-2 hover:bg-blue-500/10 rounded-lg transition-colors"><Edit2 size={18} /></button>
+                                        <button onClick={() => handleEdit(product)} className="text-blue-500 hover:text-blue-600 mx-1 p-2 hover:bg-blue-500/10 rounded-lg transition-colors"><Edit2 size={18} /></button>
                                         <button onClick={() => handleDelete(product.id)} className="text-red-500 hover:text-red-600 mx-1 p-2 hover:bg-red-500/10 rounded-lg transition-colors"><Trash2 size={18} /></button>
                                     </td>
                                 </tr>
@@ -127,7 +160,7 @@ const ProductsManager = () => {
                 <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
                     <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden border border-border animate-in fade-in zoom-in duration-200 no-scrollbar max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-border flex justify-between items-center bg-[var(--color-background)] sticky top-0 z-10">
-                            <h3 className="text-xl font-bold text-text-main">Add New Product</h3>
+                            <h3 className="text-xl font-bold text-text-main">{editingId ? 'Edit Product' : 'Add New Product'}</h3>
                             <button onClick={() => setShowModal(false)} className="text-text-muted hover:text-text-main transition-colors text-2xl">&times;</button>
                         </div>
                         <form onSubmit={handleSubmit} className="p-6 space-y-5">
@@ -202,7 +235,7 @@ const ProductsManager = () => {
                             </div>
                             <div className="flex gap-3 justify-end pt-4 border-t border-border mt-2">
                                 <button type="button" onClick={() => setShowModal(false)} className="px-5 py-2.5 text-text-muted hover:bg-[var(--color-background)] rounded-xl transition-colors font-medium">Cancel</button>
-                                <button type="submit" className="px-5 py-2.5 bg-[var(--color-secondary)] hover:bg-[var(--color-accent)] text-white rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform hover:scale-[1.02] font-medium">Create Product</button>
+                                <button type="submit" className="px-5 py-2.5 bg-[var(--color-secondary)] hover:bg-[var(--color-accent)] text-white rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform hover:scale-[1.02] font-medium">{editingId ? 'Update Product' : 'Create Product'}</button>
                             </div>
                         </form>
                     </div>

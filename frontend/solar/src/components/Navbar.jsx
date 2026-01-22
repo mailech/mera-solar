@@ -24,6 +24,8 @@ const Navbar = ({ theme, toggleTheme }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const isLoggedIn = !!localStorage.getItem('token');
+
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
@@ -49,6 +51,11 @@ const Navbar = ({ theme, toggleTheme }) => {
                     <Link to="/cart" className="cart-icon-btn">
                         <ShoppingCart size={20} />
                     </Link>
+                    {isLoggedIn ? (
+                        <Link to="/profile" className="btn btn-secondary" style={{ marginRight: '10px', textDecoration: 'none', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: '500', color: 'var(--text-heading)' }}>Profile</Link>
+                    ) : (
+                        <Link to="/login" className="btn btn-secondary" style={{ marginRight: '10px', textDecoration: 'none', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: '500', color: 'var(--text-heading)' }}>Login</Link>
+                    )}
                     <button className="btn btn-primary desktop-cta">Get a Quote</button>
                     <button className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                         {mobileMenuOpen ? <X /> : <Menu />}

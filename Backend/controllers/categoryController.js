@@ -1,13 +1,13 @@
-const { mysqlPool } = require('../config/db');
+const Category = require('../models/Category');
 
 // Get all categories
 exports.getAllCategories = async (req, res) => {
     try {
-        const [rows] = await mysqlPool.execute('SELECT * FROM categories');
-        res.status(200).json({ success: true, data: rows });
+        const categories = await Category.find().sort({ createdAt: -1 });
+        res.status(200).json({ success: true, data: categories });
     } catch (error) {
         console.error('Error fetching categories:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -15,21 +15,32 @@ exports.getAllCategories = async (req, res) => {
 exports.createCategory = async (req, res) => {
     const { name, description } = req.body;
     try {
-        const [result] = await mysqlPool.execute('INSERT INTO categories (name, description) VALUES (?, ?)', [name, description]);
-        res.status(201).json({ success: true, data: { id: result.insertId, name, description } });
+        const newCategory = new Category({
+            name,
+            description
+        });
+
+        const savedCategory = await newCategory.save();
+        res.status(201).json({ success: true, data: savedCategory });
     } catch (error) {
         console.error('Error creating category:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
 // Delete category
 exports.deleteCategory = async (req, res) => {
     try {
-        await mysqlPool.execute('DELETE FROM categories WHERE id = ?', [req.params.id]);
+        const category = await Category.findById(req.params.id);
+
+        if (!category) {
+            return res.status(404).json({ success: false, message: 'Category not found' });
+        }
+
+        await Category.findByIdAndDelete(req.params.id);
         res.status(200).json({ success: true, message: 'Category deleted' });
     } catch (error) {
         console.error('Error deleting category:', error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };

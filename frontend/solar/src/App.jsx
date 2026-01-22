@@ -11,6 +11,9 @@ import Projects from './pages/Projects';
 import ShopPackages from './pages/ShopPackages';
 import PackageDetails from './pages/PackageDetails';
 import Cart from './pages/Cart';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -52,6 +55,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </div>

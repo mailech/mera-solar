@@ -1,5 +1,6 @@
 const db = require('../config/db');
 const { validationResult } = require('express-validator');
+const Inquiry = require('../models/Inquiry');
 
 exports.submitContactForm = async (req, res) => {
     // Validation
@@ -8,14 +9,14 @@ exports.submitContactForm = async (req, res) => {
         return res.status(400).json({ success: false, errors: errors.array() });
     }
 
-    const { fullName, email, subject, message } = req.body;
+    const { name, email, phone, service_interest, message } = req.body;
 
     try {
-        const Inquiry = require('../models/Inquiry');
         const newInquiry = new Inquiry({
-            fullName,
+            name, // Changed from fullName to name to match Schema
             email,
-            subject,
+            phone,
+            service_interest,
             message
         });
 
@@ -37,25 +38,17 @@ exports.submitContactForm = async (req, res) => {
 
 exports.getAllInquiries = async (req, res) => {
     try {
-        const Inquiry = require('../models/Inquiry'); // Ensure model is imported preferably top-level but here for minimal diff context if needed, better to move to top
-        // Actually, let's just use the Inquiry model directly. 
-        // Wait, the previous code used `db.execute` which implies MySQL but we switched to Mongoose.
-        // I need to check if Inquiry model is being used. 
-        // The current file doesn't import the model properly. 
-        // Use the existing Mongoose pattern.
-
-        const Inquiry = require('../models/Inquiry');
         const inquiries = await Inquiry.find().sort({ createdAt: -1 });
-        res.json(inquiries);
+        // Standardized response format: { success: true, data: [...] }
+        res.json({ success: true, data: inquiries });
     } catch (error) {
         console.error('Error fetching inquiries:', error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ success: false, message: 'Server Error' });
     }
 };
 
 exports.deleteInquiry = async (req, res) => {
     try {
-        const Inquiry = require('../models/Inquiry');
         await Inquiry.findByIdAndDelete(req.params.id);
         res.json({ message: 'Inquiry deleted' });
     } catch (error) {
